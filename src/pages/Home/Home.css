@@ -1,0 +1,35 @@
+.select-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.select-btn button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #0f1044;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select-btn button:hover {
+  background-color: #0f1044;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-list .product-card {
+  margin: 10px;
+}
