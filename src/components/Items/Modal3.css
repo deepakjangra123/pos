@@ -1,0 +1,80 @@
+/* Modal3.css */
+
+.out_body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.m_container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px; /* Slightly larger border-radius for a softer look */
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for a more pronounced effect */
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Ensure content is stacked vertically */
+}
+
+.m_container h2 {
+  margin: 0;
+  margin-bottom: 40px;
+  font-size: 1.75em; /* Larger font size for better emphasis */
+  color: #333; /* Darker text color for better readability */
+  text-align: center; /* Center the title text */
+}
+
+.m_container label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold; /* Make labels bold for better visibility */
+  color: #333; /* Match label color with the header */
+}
+
+.m_container input {
+  width: calc(100% - 16px); /* Adjust width for better alignment with padding */
+  padding: 12px; /* Increase padding for a more spacious input */
+  margin-bottom: 20px; /* Increase bottom margin for better spacing */
+  border: 1px solid #ddd; /* Lighten border color for a softer look */
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px;
+}
+
+.m_container button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 20px; /* Increase padding for larger buttons */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em; /* Slightly smaller font size for better button fit */
+  transition: background 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.m_container button:hover {
+  background: #0056b3;
+}
+
+.m_container button.cancel-button {
+  background: #6c757d;
+}
+
+.m_container button.cancel-button:hover {
+  background: #5a6268;
+}

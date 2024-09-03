@@ -8,24 +8,23 @@ import { LuUsers2 } from "react-icons/lu";
 import { TbLogout2 } from "react-icons/tb";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink, useLocation } from "react-router-dom";
-import './Sidebar.css'
+import "./Sidebar.css";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  
   const location = useLocation();
   const currentPath = location.pathname;
   const getPageName = () => {
     const pathMapping = {
-      '/': 'Home',
-      '/cart': 'Cart',
-      '/bills': 'Bills',
-      '/items': 'Items',
-      '/customers': 'Customers',
-      '/logout': 'Logout'
+      "/": "Home",
+      "/cart": "Cart",
+      "/bills": "Bills",
+      "/items": "Items",
+      "/customers": "Customers",
+      "/logout": "Logout",
     };
-    return pathMapping[currentPath] || 'Unknown';
+    return pathMapping[currentPath] || "Unknown";
   };
 
   const menuItem = [
@@ -74,9 +73,17 @@ const Sidebar = ({ children }) => {
       </div>
       <main>
         <div className="header">
-          <div> <TbLogout2 /></div>
-          <div><h2>{getPageName()}</h2></div>
-          <div> <BsCart /></div>
+          <div>
+            {" "}
+            <TbLogout2 />
+          </div>
+          <div>
+            <h2>{getPageName()}</h2>
+          </div>
+          <div>
+            {" "}
+            <BsCart />
+          </div>
         </div>
         <div className="footer">{children}</div>
       </main>
@@ -85,5 +92,3 @@ const Sidebar = ({ children }) => {
 };
 
 export default Sidebar;
-
-
