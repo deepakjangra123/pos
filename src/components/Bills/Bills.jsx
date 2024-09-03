@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Bills.css';
 import Modal from './Modal'; // Import the Modal component
 
 const Bills = () => {
+  const [data, setData] = useState([]); // State to hold fetched data
   const [selectedData, setSelectedData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const data = [
-    { id: '12saa7s897ca7893', name: 'Honey', phoneNumber: '123-456-7890', subamount: 50, totalAmount: 100 },
-    { id: '43uch4fy5y43fg54gjq8q', name: 'Rohit', phoneNumber: '987-654-3210', subamount: 75, totalAmount: 150 },
-    // Add more data as needed
-  ];
+  useEffect(() => {
+    // Fetch data from the API
+    fetch('http://localhost:5000/RetailStorePOSAppAPI/v1/transactions')
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array to run only on component mount
 
   const handleViewClick = (item) => {
     setSelectedData(item);
@@ -28,26 +31,34 @@ const Bills = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Customer</th>
-            <th>Phone Number</th>
-            <th>Sub Amount</th>
+            <th>Customer ID</th>
             <th>Total Amount</th>
+            <th>Tax Rate</th>
+            <th>Total with Tax</th>
+            <th>Payment Method</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.phoneNumber}</td>
-              <td>{item.subamount}</td>
-              <td>{item.totalAmount}</td>
-              <td>
-                <button onClick={() => handleViewClick(item)}>View</button>
-              </td>
+          {data.length > 0 ? (
+            data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.customerId || 'N/A'}</td> {/* Handle missing customerId */}
+                <td>{item.totalAmount}</td>
+                <td>{item.taxRate}</td>
+                <td>{item.totalWithTax}</td>
+                <td>{item.paymentMethod}</td>
+                <td>
+                  <button onClick={() => handleViewClick(item)}>View</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="7">No data available</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
 
